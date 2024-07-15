@@ -35,27 +35,34 @@ public class StepDefinitions
     [When(@"I navigate to the Admin page")]
     public void WhenINavigateToTheAdminPage()
     {
+        
         _dashboardPage.NavigateToAdmin();
+         Thread.Sleep(2000);
     }
 
     [When(@"I edit the second record")]
     public void WhenIEditTheSecondRecord()
     {
         _adminPage.EditSecondRecord();
+        Thread.Sleep(2000);
     }
 
     [When(@"I update the user role")]
     public void WhenIUpdateTheUserRole()
     {
         _adminPage.UpdateUserRole("ESS");
+        Thread.Sleep(2000);
         _username = _adminPage.GetUsername();
+        Thread.Sleep(2000);
         _adminPage.Save();
+        Thread.Sleep(7000);
     }
 
     [Then(@"the user role should be updated for the second record")]
     public void ThenTheUserRoleShouldBeUpdatedForTheSecondRecord()
     {
         string newRole = _adminPage.GetUserRole(2);
+        Thread.Sleep(5000);
         Assert.IsTrue(newRole == "Admin" || newRole == "ESS");
     }
 }
